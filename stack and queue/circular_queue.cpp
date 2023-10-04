@@ -15,7 +15,7 @@ class CircularQueue{
 
     // Enqueues 'X' into the queue. Returns true if it gets pushed into the stack, and false otherwise.
     bool enqueue(int value){
-        if((front==0 && rear==size-1)||(rear==(front-1)%(size-1))){
+        if((rear+1)%size==front){
             return false;
         }
         else{
@@ -24,12 +24,8 @@ class CircularQueue{
                 rear=0;
                 arr[front]=value;
             }
-            else if(rear==size-1 && front!=0){
-                rear=0;
-                arr[rear]=value;
-            }
             else{
-                rear++;
+                rear=(rear+1)%size;
                 arr[rear]=value;
             }
             return true;
@@ -46,13 +42,10 @@ class CircularQueue{
                 ans=arr[front];
                 rear=front=-1;
             }
-            else if(front==size-1){
-                ans=arr[front];
-                front=0;
-            }
+            
             else{
                 ans=arr[front];
-                front++;
+                front=(front+1)%size;
             }
             
         }

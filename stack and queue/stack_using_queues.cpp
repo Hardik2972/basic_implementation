@@ -1,33 +1,41 @@
-#include<iostream>
-#include<queue>
+#include <iostream>
+#include <queue>
 using namespace std;
-class MyStack {
+class MyStack
+{
     queue<int> q;
+
 public:
-    MyStack() {
-        
+    MyStack()
+    {
     }
-    
-    void push(int x) {
+
+    void push(int x)
+    {
         q.push(x);
-        for(int i=0;i<q.size()-1;i++){
+        for (int i = 0; i < q.size() - 1; i++)
+        {
             q.push(q.front());
             q.pop();
         }
     }
-    
-    int pop() {
-        if(q.empty()) return -1;
+
+    int pop()
+    {
+        if (q.empty())
+            return -1;
         int ans = q.front();
         q.pop();
         return ans;
     }
-    
-    int top() {
+
+    int top()
+    {
         return q.front();
     }
-    
-    bool empty() {
+
+    bool empty()
+    {
         return q.empty();
     }
 };

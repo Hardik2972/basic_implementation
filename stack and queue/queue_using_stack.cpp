@@ -1,41 +1,49 @@
-#include<iostream>
-#include<stack>
+#include <iostream>
+#include <stack>
 using namespace std;
 
-class MyQueue {
+class MyQueue
+{
     stack<int> s;
     stack<int> s1;
+
 public:
-    MyQueue() {
-        
+    MyQueue()
+    {
     }
-    
-    void push(int x) {
-        
-        while(!s.empty()){
+
+    void push(int x)
+    {
+
+        while (!s.empty())
+        {
             s1.push(s.top());
             s.pop();
         }
         s.push(x);
-        while(!s1.empty()){
+        while (!s1.empty())
+        {
             s.push(s1.top());
             s1.pop();
         }
-       
     }
-    
-    int pop() {
-        if(s.empty()) return -1;
-        int ans= s.top();
+
+    int pop()
+    {
+        if (s.empty())
+            return -1;
+        int ans = s.top();
         s.pop();
         return ans;
     }
-    
-    int peek() {
+
+    int peek()
+    {
         return s.top();
     }
-    
-    bool empty() {
+
+    bool empty()
+    {
         return s.empty();
     }
 };
